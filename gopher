@@ -1,0 +1,53 @@
+#!/bin/sh
+
+# The container name
+CONTAINER_NAME=appliance_surge_app
+
+# Function to run migrations
+run_migrations() {
+    docker exec -it $CONTAINER_NAME sh -c "goose -dir ./db/migrations postgres \"postgres://postgres:postgres@appliance_surge_db:5432/postgres?sslmode=disable\" $@"
+}
+
+# Function to create a new migration
+make_migration() {
+    local name=$1
+    if [ -z "$name" ]; then
+        echo "Please provide a migration name"
+        exit 1
+    fi
+    # Create the migration with an absolute path and add debugging information
+    goose -dir ./db/migrations create \"$name\" sql
+}
+
+# Function to drop all tables
+drop_all_tables() {
+    docker exec -it $CONTAINER_NAME sh -c "psql \"postgres://postgres:postgres@appliance_surge_db:5432/postgres\" -f ./db/drop_all_tables.sql"
+}
+
+# Check the first argument
+case "$1" in
+    migrate)
+        case "$2" in
+            up)
+                if [ "$3" = "--fresh" ]; then
+                    drop_all_tables
+                    run_migrations up
+                else
+                    run_migrations up
+                fi
+                ;;
+            *)
+                shift
+                run_migrations "$@"
+                ;;
+        esac
+        ;;
+    make:migration)
+        shift
+        make_migration "$@"
+        ;;
+    *)
+        docker exec -it $CONTAINER_NAME "$@"
+        ;;
+esac
+
