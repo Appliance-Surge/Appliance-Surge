@@ -3,7 +3,8 @@ FROM golang:alpine
 WORKDIR /app
 
 # Install CompileDaemon
-RUN go install github.com/githubnemo/CompileDaemon@latest
+RUN go install github.com/githubnemo/CompileDaemon@latest \
+    && go install github.com/pressly/goose/v3/cmd/goose@latest
 
 COPY go.mod .
 COPY go.sum .
