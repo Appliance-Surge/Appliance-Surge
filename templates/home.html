@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Posts</h1>
+    <ul>
+    {{range .}}
+        <li>
+            <h2>{{.Title}}</h2>
+            <p><strong>By:</strong> {{.Username}}</p>
+            <p><strong>Type:</strong> {{.Type}}</p>
+            <p><strong>Brand:</strong> {{.Brand}}</p>
+            <p><strong>Model:</strong> {{.Model}}</p>
+            <p><strong>Content:</strong> {{.Content}}</p>
+            <p><strong>Created At:</strong> {{.CreatedAt}}</p>
+            <p><strong>Updated At:</strong> {{.UpdatedAt}}</p>
+        </li>
+    {{end}}
+    </ul>
+</body>
+</html>
+

@@ -15,7 +15,7 @@ func CreatePostFactory(db *storage.DB) error {
 
     // Generate fake data for a post
     post := models.Post{
-        UserID: rand.Intn(10),
+        UserID: rand.Intn(10) + 1,
         Title: faker.Word(),
         Type: rand.Intn(10),
         Brand: faker.Word(),
