@@ -1,19 +1,17 @@
 package router
 
 import (
-    "database/sql"
-
     "github.com/go-chi/chi/v5"
 
     "github.com/Appliance-Surge/Appliance-Surge/internal/config"
     "github.com/Appliance-Surge/Appliance-Surge/internal/handlers"
+    "github.com/Appliance-Surge/Appliance-Surge/internal/storage"
 )
 
-func NewRouter(cfg *config.Config, db *sql.DB) *chi.Mux {
+func NewRouter(cfg *config.Config, db *storage.DB) *chi.Mux {
     r := chi.NewRouter()
 
-    r.Get("/posts", handlers.GetPosts(db))
-    r.Post("/posts", handlers.CreatePost(db))
+    r.Get("/", handlers.HomeHandler(db))
 
     return r
 }

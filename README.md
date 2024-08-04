@@ -53,6 +53,10 @@ Create a migration
 
     ./gopher make:migration create_users_table
 
+Run factories
+
+    ./gopher factory
+
 ## Contributing
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code
