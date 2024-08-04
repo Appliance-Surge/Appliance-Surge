@@ -44,3 +44,20 @@ func (db *DB) CreateUser(user *models.User) error {
     ).Scan(&user.ID)
     return err
 }
+
+// CreatePost inserts a new post into the database
+func (db *DB) CreatePost(post *models.Post) error {
+    query := `
+        INSERT INTO posts (
+            user_id, title, type, brand, model, content, created_at, updated_at, deleted_at
+        ) VALUES (
+            $1, $2, $3, $4, $5, $6, $7, $8, $9
+        )
+        RETURNING id
+    `
+    err := db.QueryRow(
+        query,
+        post.UserID, post.Title, post.Type, post.Brand, post.Model, post.Content, post.CreatedAt, post.UpdatedAt, post.DeletedAt,
+    ).Scan(&post.ID)
+    return err
+}

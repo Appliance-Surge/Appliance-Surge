@@ -22,4 +22,13 @@ func main() {
     }
 
     log.Println("10 Users created successfully")
+
+    // Create 10 posts
+    for i := 0; i < 10; i++ {
+        if err := factories.CreatePostFactory(db); err != nil {
+            log.Fatalf("Failed to create post: %v", err)
+        }
+    }
+
+    log.Println("10 Posts created successfully")
 }
