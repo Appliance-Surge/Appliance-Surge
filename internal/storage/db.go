@@ -5,9 +5,15 @@ import (
     "log"
 
     _ "github.com/lib/pq"
+
+    "github.com/Appliance-Surge/Appliance-Surge/internal/models"
 )
 
-func NewDB(dataSourceName string) (*sql.DB, error) {
+type DB struct {
+    *sql.DB
+}
+
+func NewDB(dataSourceName string) (*DB, error) {
     db, err := sql.Open("postgres", dataSourceName)
     if err != nil {
         return nil, err
@@ -19,5 +25,22 @@ func NewDB(dataSourceName string) (*sql.DB, error) {
     }
 
     log.Println("Successfully connected to the database")
-    return db, nil
+    return &DB{db}, nil
+}
+
+// CreateUser inserts a new user into the database
+func (db *DB) CreateUser(user *models.User) error {
+    query := `
+        INSERT INTO users (
+            username, name, image, banner, score, location, about, website, social_id, social_type, email, email_verified_at, password, remember_token, created_at, updated_at
+        ) VALUES (
+            $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16
+        )
+        RETURNING id
+    `
+    err := db.QueryRow(
+        query,
+        user.Username, user.Name, user.Image, user.Banner, user.Score, user.Location, user.About, user.Website, user.SocialID, user.SocialType, user.Email, user.EmailVerifiedAt, user.Password, user.RememberToken, user.CreatedAt, user.UpdatedAt,
+    ).Scan(&user.ID)
+    return err
 }

@@ -16,7 +16,7 @@ func main() {
         log.Fatalf("Failed to connect to the database: %v", err)
     }
 
-    r := router.NewRouter(cfg, db)
+    r := router.NewRouter(cfg, db.DB)
     srv := server.NewServer(cfg, r)
 
     log.Println("Starting server...")
