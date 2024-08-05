@@ -1,0 +1,32 @@
+{{define "main_layout"}}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ block "title" .}}Home{{end}}</title>
+        {{range .CSSPaths}}
+        <link rel="stylesheet" type="text/css" href="/static/{{.}}">
+        {{end}}
+        <script defer src="/static/{{.JSPath}}"></script>
+    </head>
+    <body>
+        <header>
+            <h1 class="text-red-500 text-xl">Appliance Surge</h1>
+            <nav>
+                <ul>
+                    <li><a class="text-blue-500" href="/">Home</a></li>
+                    <li><a class="text-purple-500" href="/about">About</a></li>
+                    <li><a class="text-green-300" href="/contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            {{ block "content" . }}{{end}}
+        </main>
+        <footer>
+            <p>&copy; 2024 Appliance Surge. All rights reserved.</p>
+        </footer>
+    </body>
+</html>
+{{end}}

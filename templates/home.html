@@ -1,18 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
-<body>
+{{define "content"}}
     <h1>Posts</h1>
     <ul>
-    {{range .}}
+    {{range .PostsWithUsers}}
         <li>
             <h2>{{.Title}}</h2>
-            <p><strong>By:</strong> {{.Username}}</p>
-            <p><strong>Type:</strong> {{.Type}}</p>
+            <p class="text-blue-500"><strong>By:</strong> {{.Username}}</p>
+            <p class="text-green-300 font-bold"><strong>Type:</strong> {{.Type}}</p>
             <p><strong>Brand:</strong> {{.Brand}}</p>
             <p><strong>Model:</strong> {{.Model}}</p>
             <p><strong>Content:</strong> {{.Content}}</p>
@@ -21,6 +14,4 @@
         </li>
     {{end}}
     </ul>
-</body>
-</html>
-
+{{end}}
