@@ -7,9 +7,13 @@ import (
     "github.com/Appliance-Surge/Appliance-Surge/internal/router"
     "github.com/Appliance-Surge/Appliance-Surge/internal/server"
     "github.com/Appliance-Surge/Appliance-Surge/internal/storage"
+    "github.com/Appliance-Surge/Appliance-Surge/internal/assets"
 )
 
 func main() {
+
+    assets.LoadManifest()
+
     cfg := config.LoadConfig()
     db, err := storage.NewDB(cfg.DatabaseURL)
     if err != nil {

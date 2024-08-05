@@ -1,0 +1,30 @@
+{{define "main_layout"}}
+<!DOCTYPE html>
+<html class="scroll-pt-24" lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ block "title" .}}Home{{end}}</title>
+        {{range .CSSPaths}}
+        <link rel="stylesheet" type="text/css" href="/static/{{.}}">
+        {{end}}
+        <script defer src="/static/{{.JSPath}}"></script>
+    </head>
+    <body class="antialiased max-w-full">
+
+        <!-- Nav Bar -->
+        {{template "nav" .}}
+        <!-- /Nav Bar -->
+
+        <!-- Page Content -->
+        <main class="max-w-full">
+            {{ block "content" . }}{{end}}
+        </main>
+        <!-- /Page Content -->
+
+        <footer>
+            <p>&copy; 2024 Appliance Surge. All rights reserved.</p>
+        </footer>
+    </body>
+</html>
+{{end}}

@@ -1,0 +1,60 @@
+{{define "nav"}}
+<nav x-data="{ open:false }" class="bg-gradient-to-t from-brand-gray-300 via-brand-gray-300 to-[#323239] fixed top-0 left-0 w-full z-10 font-inter">
+    <div class="mx-auto px-4 sm:px-6">
+        <div class="flex justify-between h-20 items-center">
+
+            <!-- Logo -->
+            <div class="shrink-0 flex items-center">
+                <a class="flex items-center" href="/">
+                    <img alt="Appliance Surge Logo" src="/public/images/logo.svg" class="block size-16 fill-current text-white" />
+                    <p class="text-white font-extrabold text-xl font-intertight">Appliance <b class="font-extrabold text-brand-blue-500">Surge</b></p>
+                </a>
+            </div>
+            <!-- /Logo -->
+
+            <!-- Search Bar -->
+            <form class="h-8 w-1/3 relative font-inter hidden md:block">
+                <button class="absolute top-1/2 left-2 -translate-y-1/2" type="submit">
+                    <svg aria-hidden="true" width="15" height="15" viewBox="0 0 18 18"><path fill="#858589" d="m18 16.5-5.14-5.18h-.35a7 7 0 1 0-1.19 1.19v.35L16.5 18l1.5-1.5ZM12 7A5 5 0 1 1 2 7a5 5 0 0 1 10 0Z"></path></svg>
+                </button>
+                <input name="query" value="" class="h-full w-full pl-8 rounded-full bg-brand-gray-800 placeholder:text-brand-gray-200 text-white" placeholder="Search..." />
+            </form>
+            <!-- Search Bar -->
+
+            <div class="lg:flex items-center space-x-4 font-inter hidden">
+                {{ template "link" dict "Href" "/register" "Class" "" "Text" "Sign Up" }}
+                <p class="text-white">Have an account? <a class="text-brand-blue-500 font-bold underline" href="/login">Login</a></p>
+            </div>
+
+            <!-- Hamburger -->
+            <div class="-me-2 flex items-center xl:hidden">
+                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-white hover:border-white hover:border focus:outline-none focus:border-white focus:border transition duration-150 ease-in-out" id="mobile-nav" aria-label="Navigation">
+                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                        <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Responsive Navigation Menu -->
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden xl:hidden">
+        <div class="pt-2 pb-3 space-y-1">
+            {{template "responsive-link" dict "Href" "/questions/create" "Class" "" "Text" "Ask Question"}}
+        </div>
+        <!-- Responsive Settings Options -->
+        <div class="pt-4 pb-1 border-t border-gray-200">
+            {{template "responsive-link" dict "Href" "/register" "Class" "" "Text" "Sign Up"}}
+            {{template "responsive-link" dict "Href" "/login" "Class" "" "Text" "Login"}}
+        </div>
+            {{template "responsive-link" dict "Href" "/" "Class" "" "Text" "Questions"}}
+            {{template "responsive-link" dict "Href" "/categories" "Class" "" "Text" "Categories"}}
+            {{template "responsive-link" dict "Href" "/search" "Class" "" "Text" "Search"}}
+            {{template "responsive-link" dict "Href" "/titles" "Class" "" "Text" "Titles"}}
+            {{template "responsive-link" dict "Href" "/trophies" "Class" "" "Text" "Trophies"}}
+            {{template "responsive-link" dict "Href" "/leaderboard" "Class" "" "Text" "Leaderboards"}}
+            {{template "responsive-link" dict "Href" "/help" "Class" "" "Text" "Help"}}
+    </div>
+</nav>
+{{end}}
