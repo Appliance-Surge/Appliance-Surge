@@ -1,6 +1,6 @@
 {{define "main_layout"}}
 <!DOCTYPE html>
-<html lang="en">
+<html class="scroll-pt-24" lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,20 +10,18 @@
         {{end}}
         <script defer src="/static/{{.JSPath}}"></script>
     </head>
-    <body>
-        <header>
-            <h1 class="text-red-500 text-xl">Appliance Surge</h1>
-            <nav>
-                <ul>
-                    <li><a class="text-blue-500" href="/">Home</a></li>
-                    <li><a class="text-purple-500" href="/about">About</a></li>
-                    <li><a class="text-green-300" href="/contact">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
-        <main>
+    <body class="antialiased max-w-full">
+
+        <!-- Nav Bar -->
+        {{template "nav" .}}
+        <!-- /Nav Bar -->
+
+        <!-- Page Content -->
+        <main class="max-w-full">
             {{ block "content" . }}{{end}}
         </main>
+        <!-- /Page Content -->
+
         <footer>
             <p>&copy; 2024 Appliance Surge. All rights reserved.</p>
         </footer>
