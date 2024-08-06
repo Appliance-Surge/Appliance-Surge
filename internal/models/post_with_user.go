@@ -8,6 +8,7 @@ import "time"
 // - POSTID (int): The post ID
 // - UserID (int): The associated User ID
 // - Username (string): The author's username
+// - UserScore (int): The user's score
 // - Title (string): The post title
 // - Type (int): The type of appliance
 // - Brand (string): The brand of appliance
@@ -22,6 +23,7 @@ type PostWithUser struct {
     PostID int `db:"post_id"`
     UserID int `db:"user_id"`
     Username string `db:"username"`
+    UserScore int `db:"score"`
     Title string `db:"title"`
     Type int `db:"type"`
     Brand string `db:"brand"`
