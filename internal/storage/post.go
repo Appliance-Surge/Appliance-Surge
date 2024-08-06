@@ -4,7 +4,18 @@ import (
     "github.com/Appliance-Surge/Appliance-Surge/internal/models"
 )
 
-// CreatePost inserts a new post into the database
+// Insert a new post into the DB
+//
+// Receiver:
+// - db (*DB): The database connection
+//
+// Params:
+// - post (*models.Post): The post to be inserted
+//
+// Returns:
+// - error: An error if one occurs, or nil
+//
+// Since 0.0.1
 func (db *DB) CreatePost(post *models.Post) error {
     query := `
         INSERT INTO posts (
@@ -21,7 +32,17 @@ func (db *DB) CreatePost(post *models.Post) error {
     return err
 }
 
-// FetchPostsWithUsers fetches all posts along with their associated users
+// Fetch Posts With associated Authors
+//
+// Receiver:
+// - db (*DB): The DB connection
+//
+// Returns:
+// - []models.PostWithUser: if no error, List of Posts with associated
+// authors
+// - error: if error, return it
+//
+// Since 0.0.1
 func (db *DB) FetchPostsWithUsers() ([]models.PostWithUser, error) {
     query := `
         SELECT

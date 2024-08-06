@@ -2,7 +2,22 @@ package models
 
 import "time"
 
-// PostWithUser represents a post along with the associated user
+// Represents Posts with Associated Authors
+//
+// Fields:
+// - POSTID (int): The post ID
+// - UserID (int): The associated User ID
+// - Username (string): The author's username
+// - Title (string): The post title
+// - Type (int): The type of appliance
+// - Brand (string): The brand of appliance
+// - Model (string): The model of appliance
+// - Content (string): The text content of the post
+// - CreatedAt (*time.Time): When the post was created
+// - UpdatedAt (*time.Time): When the post was last
+// updated
+//
+// Since: 0.0.1
 type PostWithUser struct {
     PostID int `db:"post_id"`
     UserID int `db:"user_id"`
