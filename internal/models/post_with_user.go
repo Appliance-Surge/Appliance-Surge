@@ -20,15 +20,15 @@ import "time"
 //
 // Since: 0.0.1
 type PostWithUser struct {
-    PostID int `db:"post_id"`
-    UserID int `db:"user_id"`
-    Username string `db:"username"`
-    UserScore int `db:"score"`
-    Title string `db:"title"`
-    Type int `db:"type"`
-    Brand string `db:"brand"`
-    Model string `db:"model"`
-    Content string `db:"content"`
-    CreatedAt *time.Time `db:"created_at"`
-    UpdatedAt *time.Time `db:"updated_at"`
+	PostID    int        `db:"post_id"`
+	UserID    int        `db:"user_id"`
+	Username  string     `db:"username"`
+	UserScore int        `db:"score"`
+	Title     string     `db:"title"`
+	Type      int        `db:"type"`
+	Brand     string     `db:"brand"`
+	Model     string     `db:"model"`
+	Content   string     `db:"content"`
+	CreatedAt *time.Time `db:"created_at"`
+	UpdatedAt *time.Time `db:"updated_at"`
 }

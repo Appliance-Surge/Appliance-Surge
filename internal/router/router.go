@@ -4,13 +4,13 @@
 package router
 
 import (
-    "net/http"
+	"net/http"
 
-    "github.com/go-chi/chi/v5"
+	"github.com/go-chi/chi/v5"
 
-    "github.com/Appliance-Surge/Appliance-Surge/internal/config"
-    "github.com/Appliance-Surge/Appliance-Surge/internal/handlers"
-    "github.com/Appliance-Surge/Appliance-Surge/internal/storage"
+	"github.com/Appliance-Surge/Appliance-Surge/internal/config"
+	"github.com/Appliance-Surge/Appliance-Surge/internal/handlers"
+	"github.com/Appliance-Surge/Appliance-Surge/internal/storage"
 )
 
 // Initializes the routing for the web server
@@ -24,10 +24,10 @@ import (
 //
 // Since: 0.0.1
 func NewRouter(cfg *config.Config, db *storage.DB) *chi.Mux {
-    r := chi.NewRouter()
-    Routes(r, db)
-    SetupFileServers(r)
-    return r
+	r := chi.NewRouter()
+	Routes(r, db)
+	SetupFileServers(r)
+	return r
 }
 
 // Sets the application routes
@@ -40,7 +40,7 @@ func NewRouter(cfg *config.Config, db *storage.DB) *chi.Mux {
 //
 // Since 0.0.1
 func Routes(r *chi.Mux, db *storage.DB) {
-    r.Get("/", handlers.HomeHandler(db))
+	r.Get("/", handlers.HomeHandler(db))
 }
 
 // Serve asset files to client
@@ -52,9 +52,9 @@ func Routes(r *chi.Mux, db *storage.DB) {
 //
 // Since 0.0.1
 func SetupFileServers(r *chi.Mux) {
-    staticFileServer := http.FileServer(http.Dir("./static"))
-    r.Handle("/static/*", http.StripPrefix("/static", staticFileServer))
+	staticFileServer := http.FileServer(http.Dir("./static"))
+	r.Handle("/static/*", http.StripPrefix("/static", staticFileServer))
 
-    publicFileServer := http.FileServer(http.Dir("./public"))
-    r.Handle("/public/*", http.StripPrefix("/public", publicFileServer))
+	publicFileServer := http.FileServer(http.Dir("./public"))
+	r.Handle("/public/*", http.StripPrefix("/public", publicFileServer))
 }

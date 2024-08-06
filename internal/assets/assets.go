@@ -1,10 +1,10 @@
 package assets
 
 import (
-    "encoding/json"
-    "os"
-    "log"
-    "path/filepath"
+	"encoding/json"
+	"log"
+	"os"
+	"path/filepath"
 )
 
 // Represents single entry in the manifest file
@@ -15,8 +15,8 @@ import (
 //
 // Since: 0.0.1
 type ManifestEntry struct {
-    File string   `json:"file"`
-    CSS  []string `json:"css"`
+	File string   `json:"file"`
+	CSS  []string `json:"css"`
 }
 
 // Map that holds the contents of the manifest file
@@ -33,16 +33,16 @@ var manifest map[string]ManifestEntry
 //
 // Since: 0.0.1
 func LoadManifest() {
-    manifestFile := filepath.Join("static", ".vite", "manifest.json")
-    data, err := os.ReadFile(manifestFile)
-    if err != nil {
-        log.Fatalf("Failed to read manifest file: %v", err)
-    }
+	manifestFile := filepath.Join("static", ".vite", "manifest.json")
+	data, err := os.ReadFile(manifestFile)
+	if err != nil {
+		log.Fatalf("Failed to read manifest file: %v", err)
+	}
 
-    err = json.Unmarshal(data, &manifest)
-    if err != nil {
-        log.Fatalf("Failed to parse manifest file: %v", err)
-    }
+	err = json.Unmarshal(data, &manifest)
+	if err != nil {
+		log.Fatalf("Failed to parse manifest file: %v", err)
+	}
 }
 
 // Looks up the given asset in the manifest map and returns
@@ -57,10 +57,10 @@ func LoadManifest() {
 //
 // Since: 0.0.1
 func AssetPath(asset string) string {
-    if entry, exists := manifest[asset]; exists {
-        return entry.File
-    }
-    return ""
+	if entry, exists := manifest[asset]; exists {
+		return entry.File
+	}
+	return ""
 }
 
 // Looks up the given asset in the manifest map and returns
@@ -75,9 +75,8 @@ func AssetPath(asset string) string {
 //
 // Since: 0.0.1
 func CSSPaths(asset string) []string {
-    if entry, exists := manifest[asset]; exists {
-        return entry.CSS
-    }
-    return nil
+	if entry, exists := manifest[asset]; exists {
+		return entry.CSS
+	}
+	return nil
 }
-
