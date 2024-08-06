@@ -1,10 +1,10 @@
 package storage
 
 import (
-    "database/sql"
-    "log"
+	"database/sql"
+	"log"
 
-    _ "github.com/lib/pq"
+	_ "github.com/lib/pq"
 )
 
 // Represents DB configuration
@@ -14,7 +14,7 @@ import (
 //
 // Since: 0.0.1
 type DB struct {
-    *sql.DB
+	*sql.DB
 }
 
 // Create new DB connection
@@ -28,16 +28,16 @@ type DB struct {
 //
 // Since: 0.0.1
 func NewDB(dataSourceName string) (*DB, error) {
-    db, err := sql.Open("postgres", dataSourceName)
-    if err != nil {
-        return nil, err
-    }
+	db, err := sql.Open("postgres", dataSourceName)
+	if err != nil {
+		return nil, err
+	}
 
-    // Verify the connection
-    if err := db.Ping(); err != nil {
-        return nil, err
-    }
+	// Verify the connection
+	if err := db.Ping(); err != nil {
+		return nil, err
+	}
 
-    log.Println("Successfully connected to the database")
-    return &DB{db}, nil
+	log.Println("Successfully connected to the database")
+	return &DB{db}, nil
 }
