@@ -1,6 +1,6 @@
 ## 📑 Description
 
-Closes https://github.com/goravel/goravel/issues/?
+Closes https://github.com/Appliance-Surge/Appliance-Surge/issues/?
 
 <!-- Please add Review Ready tag when the PR is good to go -->
 <!-- More description can be written after this -->
