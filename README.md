@@ -1,8 +1,12 @@
 <div align="center">
+
+
 [![Test](https://github.com/Appliance-Surge/Appliance-Surge/actions/workflows/test.yml/badge.svg)](https://github.com/Appliance-Surge/Appliance-Surge/actions)
 [![Report Card](https://goreportcard.com/badge/github.com/Appliance-Surge/Appliance-Surge)](https://goreportcard.com/report/github.com/Appliance-Surge/Appliance-Surge)
 [![Codecov](https://codecov.io/gh/goravel/framework/branch/master/graph/badge.svg)](https://codecov.io/gh/goravel/framework)
 ![License](https://img.shields.io/github/license/Appliance-Surge/Appliance-Surge)
+
+
 </div>
 
 # Appliance Surge
