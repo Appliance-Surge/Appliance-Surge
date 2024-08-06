@@ -1,0 +1,47 @@
+{{define "leftNav"}}
+<div class="font-inter flex flex-col">
+    <p class="text-gray-400 text-center">Join our community to ask questions, learn, and share technical knowledge!</p>
+    {{ template "link" dict "Href" "/register" "Class" "text-center mt-2" "Text" "Sign Up" }}
+    <p class="text-gray-400 mt-2 text-sm text-center">Already have an account? <a href="/login" class="text-brand-blue-500 underline">Login</a></p>
+    <nav class="mt-8">
+        <ul class="flex flex-col font-bold">
+            <li class="text-lg pl-2 py-2 hover:border-l hover:border-brand-blue-500 text-gray-400">
+                <a href="/" class="flex items-center">
+                    <img class="mr-2 w-6 h-6" src="" />
+                    Questions
+                </a>
+            </li>
+            <li class="text-lg pl-2 py-2 hover:border-l hover:border-brand-blue-500 text-gray-400">
+                <a href="/categories" class="flex items-center">
+                    <img class="mr-2 w-6 h-6" src="" />
+                    Categories
+                </a>
+            </li>
+            <li class="text-lg pl-2 py-2 hover:border-l hover:border-brand-blue-500 text-gray-400">
+                <a href="/titles" class="flex items-center">
+                    <img class="mr-2 w-6 h-6" src="" />
+                    Titles
+                </a>
+            </li>
+            <li class="text-lg pl-2 py-2 hover:border-l hover:border-brand-blue-500 text-gray-400">
+                <a href="/trophies" class="flex items-center">
+                    <img class="mr-2 w-6 h-6" src="" />
+                    Trophies
+                </a>
+            </li>
+            <li class="text-lg pl-2 py-2 hover:border-l hover:border-brand-blue-500 text-gray-400">
+                <a href="/leaderboard" class="flex items-center">
+                    <img class="mr-2 w-6 h-6" src="" />
+                    Leaderboard
+                </a>
+            </li>
+            <li class="text-lg pl-2 py-2 hover:border-l hover:border-brand-blue-500 text-gray-400">
+                <a href="/help" class="flex items-center">
+                    <img class="mr-2 w-6 h-6" src="" />
+                    Help
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+{{end}}

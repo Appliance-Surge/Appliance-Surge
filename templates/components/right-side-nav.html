@@ -1,0 +1,21 @@
+{{define "rightNav"}}
+<div class="font-inter p-6 flex flex-col items-center bg-brand-gray-800 rounded-lg">
+    <h2 class="text-white text-xl font-bold text-center">Site Tour</h2>
+    <div class="border border-brand-gray-300 w-full my-2"></div>
+    <p class="text-gray-300 text-center">Start here for a quick overview of the site. We have a lot to offer!</p>
+    {{ template "link" dict "Href" "/tour" "Class" "mt-4" "Text" "Start Tour" }}
+</div>
+
+<div class="font-inter p-6 flex flex-col items-center bg-brand-gray-800 rounded-lg mt-4">
+    <h2 class="text-white text-xl font-bold text-center">Become a part of the community</h2>
+    <div class="border border-brand-gray-300 w-full my-2"></div>
+    <p class="text-gray-300 text-center">Ask questions. Get answers. No more run-arounds. Help grow this library of appliance content.</p>
+    {{ template "link" dict "Href" "/register" "Class" "mt-4" "Text" "Sign Up" }}
+</div>
+
+<div class="font-inter p-6 flex flex-col items-center bg-brand-gray-800 rounded-lg mt-4">
+    <h2 class="text-white text-xl font-bold text-center">Need help?</h2>
+    <div class="border border-brand-gray-300 w-full my-2"></div>
+    <p class="text-gray-300 text-center">We have the answers to all your questions! Check out the <a href="/help" class="text-brand-blue-500 underline">help center</a></p>
+</div>
+{{end}}

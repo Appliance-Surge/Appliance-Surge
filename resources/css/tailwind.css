@@ -17,3 +17,7 @@
 body {
     font-family: 'Arial';
 }
+
+.bg-radial-gradient {
+    background-image: radial-gradient(circle at center -10%, #123334 5%, #0f0f14 20%);
+}

@@ -11,17 +11,27 @@ import (
     "github.com/Appliance-Surge/Appliance-Surge/internal/models"
 )
 
+var tmpl *template.Template
+
 // Parse the html templates required for the home page
 // Load utility functions to be used within the templates
 //
 // @since 0.0.1
-var tmpl = template.Must(template.New("").Funcs(utils.FuncMap()).ParseFiles(
-    "templates/layouts/main_layout.html",
-    "templates/home.html",
-    "templates/components/navigation.html",
-    "templates/components/primary-link.html",
-    "templates/components/responsive-nav-link.html",
-))
+func fetchTemplates() {
+    var err error
+    tmpl, err = template.New("").Funcs(utils.FuncMap()).ParseFiles(
+        "templates/layouts/main_layout.html",
+        "templates/home.html",
+    )
+    if err != nil {
+        log.Fatalf("Failed to parse base templates: %v", err)
+    }
+
+    tmpl, err = tmpl.ParseGlob("templates/components/*.html")
+    if err != nil {
+        log.Fatalf("Failed to parse component templates: %v", err)
+    }
+}
 
 // Fetch data and render home view
 //
@@ -33,6 +43,7 @@ var tmpl = template.Must(template.New("").Funcs(utils.FuncMap()).ParseFiles(
 //
 // Since: 0.0.1
 func HomeHandler(db *storage.DB) http.HandlerFunc {
+    fetchTemplates()
     return func(w http.ResponseWriter, r *http.Request) {
         postsWithUsers, err := fetchData(db, w)
         if err != nil {

@@ -11,20 +11,34 @@
         <script defer src="/static/{{.JSPath}}"></script>
     </head>
     <body class="antialiased max-w-full">
+        <div class="min-h-screen bg-radial-gradient relative">
 
-        <!-- Nav Bar -->
-        {{template "nav" .}}
-        <!-- /Nav Bar -->
+            <!-- Nav Bar -->
+            {{template "nav" .}}
+            <!-- /Nav Bar -->
 
-        <!-- Page Content -->
-        <main class="max-w-full">
-            {{ block "content" . }}{{end}}
-        </main>
-        <!-- /Page Content -->
+            <!-- Left Side Nav -->
+            <div class="hidden xl:block fixed mt-20 w-[15%] p-8">
+                {{template "leftNav" .}}
+            </div>
+            <!-- /Left Side Nav -->
 
-        <footer>
-            <p>&copy; 2024 Appliance Surge. All rights reserved.</p>
-        </footer>
+            <!-- Right Side Nav -->
+            <div class="hidden 2xl:block fixed right-0 w-[15%] p-8 mt-20">
+                {{template "rightNav" .}}
+            </div>
+            <!-- /Right Side Nav -->
+
+            <!-- Page Content -->
+            <main class="max-w-full">
+                {{ block "content" . }}{{end}}
+            </main>
+            <!-- /Page Content -->
+
+            <footer>
+                <p>&copy; 2024 Appliance Surge. All rights reserved.</p>
+            </footer>
+        </div>
     </body>
 </html>
 {{end}}
